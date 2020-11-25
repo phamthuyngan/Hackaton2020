@@ -4,17 +4,17 @@
   box-sizing: border-box;
 }
 body {
-  //   background: rgb(63, 94, 251);
-  //   background: radial-gradient(
-  //     circle,
-  //     rgba(63, 94, 251, 1) 0%,
-  //     rgba(163, 81, 175, 1) 64%,
-  //     rgba(252, 70, 219, 1) 100%
-  //   );
-  background-color: rgb(71, 7, 53);
-  background-image: url(./static/computer.png);
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(163, 81, 175, 1) 64%,
+    rgba(252, 70, 219, 1) 100%
+  );
+  //background-color: rgb(71, 7, 53);
+  //background-image: url(./static/computer.png);
   background-blend-mode: multiply;
-  color: rgb(204, 196, 196);
+  color: white;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
