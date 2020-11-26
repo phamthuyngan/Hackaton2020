@@ -25,12 +25,12 @@ public class UIManager : MonoBehaviour
         lvlData = (LevelData)ScriptableObject.CreateInstance(typeof(LevelData));
 
         //test
-        //timelines = new List<Action>[5];
         //Action test = (Action)ScriptableObject.CreateInstance(typeof(Action));
-        //for (int i = 0; i < 5; i++)
-        //{
-        //    timelines[i] = new List<Action>();
-        //}
+        timelines = new List<Action>[5];
+        for (int i = 0; i < 5; i++)
+        {
+            timelines[i] = new List<Action>();
+        }
         //timelines[3].Add(test);
         //ReadTimeline();
     }
@@ -40,11 +40,19 @@ public class UIManager : MonoBehaviour
         string data = JsonUtility.ToJson(lvlData);
         gameManager.ExportData(data);
     }
+    public void AddAction(int objIndex, Action action)
+    {
+        timelines[objIndex].Add(action);
+    }
     public void ReadTimeline()
     {
-        for (int i = 0; i < timelines.Length; i++)
-            NbrOfTurns = (timelines[i].Count > NbrOfTurns) ? timelines[i].Count : NbrOfTurns;
-        cor = StartCoroutine(PlayActions());
+        if (!isReading)
+        {
+            for (int i = 0; i < timelines.Length; i++) // checks the maximum nuber of turn to read
+                NbrOfTurns = (timelines[i].Count > NbrOfTurns) ? timelines[i].Count : NbrOfTurns;
+
+            cor = StartCoroutine(PlayActions());// start the reading coroutine
+        }
     }
 
     private IEnumerator PlayActions()

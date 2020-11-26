@@ -7,7 +7,6 @@ public class Robot : MonoBehaviour
     [SerializeField] private GameObject[] parts; 
     [Range(0.0f, 1.0f)][SerializeField] private float rotationSpeed;
 
-
     public void MovePart(int objIndex, Action action)
     {
         StartCoroutine(RotateTo(parts[objIndex], action.axis, action.angle));
@@ -20,16 +19,16 @@ public class Robot : MonoBehaviour
         switch (axis)
         {
             case Axis.x:
-                currentRotation = part.transform.localRotation.x;
-                endRotation = part.transform.localRotation.x + angle;
+                currentRotation = part.transform.localEulerAngles.x;
+                endRotation = part.transform.localEulerAngles.x + angle;
                 break;
             case Axis.y:
-                currentRotation = part.transform.localRotation.y;
-                endRotation = part.transform.localRotation.y + angle;
+                currentRotation = part.transform.localEulerAngles.y;
+                endRotation = part.transform.localEulerAngles.y + angle;
                 break;
             case Axis.z:
-                currentRotation = part.transform.localRotation.z;
-                endRotation = part.transform.localRotation.z + angle;
+                currentRotation = part.transform.localEulerAngles.z;
+                endRotation = part.transform.localEulerAngles.z + angle;
                 break;
             default:
                 break;
@@ -37,22 +36,22 @@ public class Robot : MonoBehaviour
         while (lerpPos < 1.0f)
         {
             lerpPos += rotationSpeed * Time.deltaTime;
-            //target.transform.rotation
 
             switch (axis)
             {
                 case Axis.x:
-                    part.transform.localRotation = Quaternion.Euler( new Vector3(Mathf.Lerp(currentRotation, endRotation, lerpPos), part.transform.localRotation.y, part.transform.localRotation.z));
+                    part.transform.localEulerAngles =  new Vector3(Mathf.LerpAngle(currentRotation, endRotation, lerpPos), part.transform.localEulerAngles.y, part.transform.localEulerAngles.z);
                     break;
                 case Axis.y:
-                    part.transform.localRotation = Quaternion.Euler(new Vector3(part.transform.localRotation.x, Mathf.Lerp(currentRotation, endRotation, lerpPos), part.transform.localRotation.z));
+                    part.transform.localEulerAngles = new Vector3(part.transform.localEulerAngles.x, Mathf.LerpAngle(currentRotation, endRotation, lerpPos), part.transform.localEulerAngles.z);
                     break;
                 case Axis.z:
                     break;
-                    part.transform.localRotation = Quaternion.Euler(new Vector3(part.transform.localRotation.x, part.transform.localRotation.y, Mathf.Lerp(currentRotation, endRotation, lerpPos)));
+                    part.transform.localEulerAngles = new Vector3(part.transform.localEulerAngles.x, part.transform.localEulerAngles.y, Mathf.LerpAngle(currentRotation, endRotation, lerpPos));
                 default:
                     break;
             }
+            Debug.Log(part.transform.localEulerAngles);
             yield return new WaitForEndOfFrame();
         }
     }
