@@ -1,5 +1,5 @@
 import "./style.scss";
-// import $ from 'jquery';
+import $ from "jquery";
 // import axios from 'axios';
 
 const buildUrl = "Build";
@@ -46,3 +46,19 @@ script.onload = () => {
     });
 };
 document.body.appendChild(script);
+
+$.get("http://localhost:3000/joueurs").then((data) => {
+  console.table(data);
+  for (let i = 0; i < $(data).length; i++) {
+    const table = $(
+      `<tr>
+        <td>${data[i].pseudo}</td>
+        <td>${data[i].score}</td>
+        <td>${data[i].score}</td>
+      </tr>
+      `
+    );
+
+    $("table").append(table);
+  }
+});
