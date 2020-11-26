@@ -1,0 +1,17 @@
+{"joueurs":[
+    { "pseudo":"John","score":30},
+    { "pseudo":"Anna","score":20},
+    { "pseudo":"Peter","score":10},
+    { "pseudo":"Kevin","score":34},
+    { "pseudo":"Jullie","score":18},
+    { "pseudo":"Alice","score":10},
+    { "pseudo":"Jessica","score":35},
+    { "pseudo":"Annie","score":29},
+    { "pseudo":"Brad","score":16},
+    { "pseudo":"Camille","score":37},
+    { "pseudo":"Anna","score":20 },
+    { "pseudo":"Antoine","score":64},
+    { "pseudo":"Jessie","score":30},
+    { "pseudo":"Eloise","score":28},
+    { "pseudo":"Patrick","score":10}
+  ]}
