@@ -1,45 +1,60 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-enum Axis { x,y,z};
+public enum Axis { x, y, z };
 public class Robot : MonoBehaviour
 {
-    [SerializeField] private GameObject arm1, arm2, arm3, arm4, handRotator, hand, claw1, claw2;
-    [SerializeField] private float rotationSpeed;
+    [SerializeField] private GameObject[] parts; 
+    [Range(0.0f, 1.0f)][SerializeField] private float rotationSpeed;
 
-    // Update is called once per frame
-    void Update()
+
+    public void MovePart(int objIndex, Action action)
     {
-        transform.Rotate(new Vector3(0.0f, 1.0f, 0.0f));
+        StartCoroutine(RotateTo(parts[objIndex], action.axis, action.angle));
     }
-
-    private IEnumerator RotateTo(GameObject target, Axis axis, float angle)
+    private IEnumerator RotateTo(GameObject part, Axis axis, float angle) // makes the object rotate until a desired angle 
     {
-        float endRotation;
-        float currentRotation;
+        float endRotation = 0.0f;
+        float currentRotation = 0.0f;
         float lerpPos = 0.0f;
         switch (axis)
         {
             case Axis.x:
-                currentRotation = target.transform.localRotation.x;
-                endRotation = target.transform.localRotation.x + angle;
+                currentRotation = part.transform.localRotation.x;
+                endRotation = part.transform.localRotation.x + angle;
                 break;
             case Axis.y:
-                currentRotation = target.transform.localRotation.y;
-                endRotation = target.transform.localRotation.y + angle;
+                currentRotation = part.transform.localRotation.y;
+                endRotation = part.transform.localRotation.y + angle;
                 break;
             case Axis.z:
-                currentRotation = target.transform.localRotation.z;
-                endRotation = target.transform.localRotation.z + angle;
+                currentRotation = part.transform.localRotation.z;
+                endRotation = part.transform.localRotation.z + angle;
                 break;
             default:
                 break;
         }
-        while (lerpPos >= 1.0f)
+        while (lerpPos < 1.0f)
         {
+            lerpPos += rotationSpeed * Time.deltaTime;
+            //target.transform.rotation
 
+            switch (axis)
+            {
+                case Axis.x:
+                    part.transform.localRotation = Quaternion.Euler( new Vector3(Mathf.Lerp(currentRotation, endRotation, lerpPos), part.transform.localRotation.y, part.transform.localRotation.z));
+                    break;
+                case Axis.y:
+                    part.transform.localRotation = Quaternion.Euler(new Vector3(part.transform.localRotation.x, Mathf.Lerp(currentRotation, endRotation, lerpPos), part.transform.localRotation.z));
+                    break;
+                case Axis.z:
+                    break;
+                    part.transform.localRotation = Quaternion.Euler(new Vector3(part.transform.localRotation.x, part.transform.localRotation.y, Mathf.Lerp(currentRotation, endRotation, lerpPos)));
+                default:
+                    break;
+            }
+            yield return new WaitForEndOfFrame();
         }
-        yield return new WaitForEndOfFrame();
     }
+
 }

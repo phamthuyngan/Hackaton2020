@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 719883415264081793}
   - component: {fileID: 9175513710257684958}
   - component: {fileID: 1859729612781767704}
+  - component: {fileID: 6949067232181250821}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368379977156597332}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -114,6 +115,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6949067232181250821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368379977156597332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106230a2dd09d7e4790b67bd745b35fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arm1: {fileID: 6723937963131495879}
+  arm2: {fileID: 6386952560175579071}
+  arm3: {fileID: 7390123803838650704}
+  arm4: {fileID: 1626512024240282003}
+  handRotator: {fileID: 2188097823504543854}
+  hand: {fileID: 3209675526499250868}
+  claw1: {fileID: 7668346962117402051}
+  claw2: {fileID: 4750318857206079034}
+  grabTrigger: {fileID: 8358955286015878449}
+  rotationSpeed: 0.1
 --- !u!1 &1626512024240282003
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +163,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626512024240282003}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.000000059604638, w: 1}
   m_LocalPosition: {x: -0.9570691, y: -2.842171e-16, z: -0.08013342}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

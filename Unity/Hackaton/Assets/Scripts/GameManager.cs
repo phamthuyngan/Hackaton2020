@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-
+﻿using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public void ExportData(string data)
     {
-        //System.IO.File.WriteAllText(Application.persistentDataPath + "/LevelData.json", data);
         string filePath = Application.persistentDataPath + "/LevelData.json";
         if (!File.Exists(filePath))
             Debug.LogError("The path doesn't exist");
@@ -16,13 +13,19 @@ public class GameManager : MonoBehaviour
         using (StreamWriter sw = new StreamWriter(filePath))
             sw.Write(data);
         Debug.Log("Successfully saved file to :" + filePath + "\n" + data);
+    }
 
-        //System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
-        //{
-        //    Arguments = Application.persistentDataPath,
-        //    FileName = "explorer.exe"
-        //};
+    public void LoadScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
-        //System.Diagnostics.Process.Start(startInfo);
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
