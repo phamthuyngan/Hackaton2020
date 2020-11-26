@@ -4,6 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+        LoadScene("MenuScene");
+    }
+
     public void ExportData(string data)
     {
         string filePath = Application.persistentDataPath + "/LevelData.json";
