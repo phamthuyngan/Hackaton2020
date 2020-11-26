@@ -1,5 +1,6 @@
 // @import "@fortawesome/fontawesome-free/css/all.css";
 // @import "node_modules/bootstrap/scss/bootstrap";
+
 * {
   box-sizing: border-box;
 }
@@ -73,7 +74,7 @@ nav ul li:hover {
   margin-top: 80px;
   top: 110%;
   width: 70%;
-  background-color: rgb(255, 255, 255, 0.3);
+  background-color: rgba(41, 40, 40, 0.4);
 }
 .info {
   padding: 20px;
@@ -107,12 +108,12 @@ nav ul li:hover {
   font-size: 30px;
   line-height: 50px;
 
-  background-color: rgb(204, 196, 196, 0.5);
+  background-color: rgba(172, 170, 170, 0.3);
 }
 .card {
   display: flex;
   border: 1px solid gray;
-  background-color: rgb(204, 196, 196, 0.5);
+  background-color: rgba(172, 170, 170, 0.3);
   width: 60%;
   text-align: left;
 }
@@ -149,5 +150,5 @@ td {
   height: 30px;
 }
 tr:nth-child(even) {
-  background-color: rgb(255, 255, 255, 0.3);
+  background-color: rgba(172, 170, 170, 0.3);
 }
