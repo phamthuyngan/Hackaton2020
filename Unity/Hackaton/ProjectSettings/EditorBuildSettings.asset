@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Instructions.unity
     guid: 0749d64bf31733c47af128ebbf4eede3
+  - enabled: 1
+    path: Assets/Scenes/Memes.unity
+    guid: d866147229367eb4db7918a8400c9da7
   m_configObjects: {}
