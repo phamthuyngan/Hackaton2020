@@ -1,4 +1,4 @@
-import { promise } from './src/promise-of-unity';
+import { promise } from "./src/promise-of-unity";
 
 import "./style.scss";
 import $ from "jquery";
@@ -15,18 +15,22 @@ $.get("http://localhost:3000/joueurs").then((data) => {
   const player = $(
     `<tr><td>${data[data.length - 1].pseudo}</td><td>${
       data[data.length - 1].score
-    }</td></tr> `,
+    }</td></tr> `
   );
   $(".player").append(player);
 
   console.log(data[data.length - 1]);
 
-  localStorage.setItem("Thao", 128);
-  localStorage.setItem("Kelly", 120);
+  // localStorage.setItem("Thao", 128);
+  // localStorage.setItem("Kelly", 120);
+  // localStorage.setItem("Anais", 150);
+  // localStorage.setItem("Sonia", 170);
+  // localStorage.setItem("Ngan", 180);
+  // localStorage.setItem("Katarina", 190);
 
-  for (let i = 0, len = localStorage.length; i < len; ++i) {
-    console.log(localStorage.getItem(localStorage.key(i)));
-  }
+  // for (let i = 0, len = localStorage.length; i < len; ++i) {
+  //   console.log(localStorage.getItem(localStorage.key(i)));
+  // }
 
   // sorting the data by highest score
   function sortResults(prop, asc) {
@@ -47,7 +51,7 @@ $.get("http://localhost:3000/joueurs").then((data) => {
         <td>${data[i].pseudo}</td>
         <td>${data[i].score}</td>
        
-      </tr>`,
+      </tr>`
     );
 
     $(".score").append(table);
@@ -56,21 +60,21 @@ $.get("http://localhost:3000/joueurs").then((data) => {
 
 // Slideshow
 let currentSlide = 1;
-const slides = document.getElementsByClassName('mySlides');
-const dots = document.getElementsByClassName('dot');
+const slides = document.getElementsByClassName("mySlides");
+const dots = document.getElementsByClassName("dot");
 
 function showSlideDot(slideIndex) {
   for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = 'none';
-    dots[i].style.color = '#bbb';
+    slides[i].style.display = "none";
+    dots[i].style.color = "#bbb";
   }
-  slides[slideIndex - 1].style.display = 'flex';
-  dots[slideIndex - 1].style.color = 'rgb(155, 56, 127)';
+  slides[slideIndex - 1].style.display = "flex";
+  dots[slideIndex - 1].style.color = "rgb(155, 56, 127)";
 }
 
 function getCurrentSlide() {
   for (let i = 0; i < dots.length; i++) {
-    if (dots[i].style.color === 'rgb(155, 56, 127)') {
+    if (dots[i].style.color === "rgb(155, 56, 127)") {
       currentSlide = i + 1;
     }
   }
@@ -78,47 +82,51 @@ function getCurrentSlide() {
 }
 
 function showSlide(slideIndex) {
-  if (slideIndex > slides.length) { currentSlide = 1; }
-  if (slideIndex < 1) { currentSlide = slides.length; }
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = 'none';
-    dots[i].style.color = '#bbb';
+  if (slideIndex > slides.length) {
+    currentSlide = 1;
   }
-  slides[currentSlide - 1].style.display = 'flex';
-  dots[currentSlide - 1].style.color = 'rgb(155, 56, 127)';
+  if (slideIndex < 1) {
+    currentSlide = slides.length;
+  }
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    dots[i].style.color = "#bbb";
+  }
+  slides[currentSlide - 1].style.display = "flex";
+  dots[currentSlide - 1].style.color = "rgb(155, 56, 127)";
 }
 
 function nextSlide() {
   currentSlide = getCurrentSlide();
-  showSlide(currentSlide += 1);
+  showSlide((currentSlide += 1));
 }
 
 function previousSlide() {
   currentSlide = getCurrentSlide();
-  showSlide(currentSlide -= 1);
+  showSlide((currentSlide -= 1));
 }
 
 window.onload = function () {
   showSlide(currentSlide);
-  document.getElementById('prev').addEventListener('click', () => {
+  document.getElementById("prev").addEventListener("click", () => {
     previousSlide();
   });
-  document.getElementById('next').addEventListener('click', () => {
+  document.getElementById("next").addEventListener("click", () => {
     nextSlide();
   });
-  document.getElementById('dot1').addEventListener('click', () => {
+  document.getElementById("dot1").addEventListener("click", () => {
     showSlideDot(1);
   });
-  document.getElementById('dot2').addEventListener('click', () => {
+  document.getElementById("dot2").addEventListener("click", () => {
     showSlideDot(2);
   });
-  document.getElementById('dot3').addEventListener('click', () => {
+  document.getElementById("dot3").addEventListener("click", () => {
     showSlideDot(3);
   });
-  document.getElementById('dot4').addEventListener('click', () => {
+  document.getElementById("dot4").addEventListener("click", () => {
     showSlideDot(4);
   });
-  document.getElementById('dot5').addEventListener('click', () => {
+  document.getElementById("dot5").addEventListener("click", () => {
     showSlideDot(5);
   });
 };
