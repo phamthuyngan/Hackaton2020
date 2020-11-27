@@ -93,6 +93,7 @@ public class UIManager : MonoBehaviour
         lvlData.pseudo = pseudo.text;
         string data = JsonUtility.ToJson(lvlData);
         gameManager.ExportData(data);
+        Communicator.SaveResult(lvlData.pseudo, lvlData.cycles);
     }
     private void ArraysInit()
     {

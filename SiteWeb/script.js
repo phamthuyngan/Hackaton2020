@@ -1,11 +1,10 @@
 import { promise } from './src/promise-of-unity';
 
-promise();
-
 import "./style.scss";
 import $ from "jquery";
-// import axios from 'axios';
 
+promise();
+// import axios from 'axios';
 
 // script for the site
 // getting info from json file:
@@ -21,6 +20,13 @@ $.get("http://localhost:3000/joueurs").then((data) => {
   $(".player").append(player);
 
   console.log(data[data.length - 1]);
+
+  localStorage.setItem("Thao", 128);
+  localStorage.setItem("Kelly", 120);
+
+  for (let i = 0, len = localStorage.length; i < len; ++i) {
+    console.log(localStorage.getItem(localStorage.key(i)));
+  }
 
   // sorting the data by highest score
   function sortResults(prop, asc) {
