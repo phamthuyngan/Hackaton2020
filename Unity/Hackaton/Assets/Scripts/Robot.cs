@@ -10,15 +10,17 @@ public class Robot : MonoBehaviour
 
     private void Update()
     {
-        if (parts[parts.Length - 1].transform.rotation.z <= 0.1f)
+        if (parts[parts.Length - 1].transform.rotation.z >= -0.1f)
             isGrabbing = true;
         else
             isGrabbing = false;
     }
     public void ResetRotation()
     {
-        for (int i = 0; i < parts.Length - 2; i++)
-            parts[i].transform.localEulerAngles = new Vector3();
+        for (int i = 0; i < parts.Length - 1; i++)
+        {
+            parts[i].transform.localEulerAngles = new Vector3(0.0f,0.0f,0.0f);
+        }
         parts[parts.Length - 1].transform.localEulerAngles = new Vector3(0.0f,0.0f,-12.5f);
     }
 

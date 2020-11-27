@@ -21,7 +21,7 @@ public class LanguagueBalls : MonoBehaviour
 
     void Update()
     {
-        childBillboard.LookAt(cam);
+        childBillboard.LookAt(transform.position - (cam.position - transform.position));
     }
 
     public void Reset()
@@ -43,5 +43,13 @@ public class LanguagueBalls : MonoBehaviour
         rb.useGravity = true;
         transform.parent = null;
         transform.SetPositionAndRotation(originalPosition, Quaternion.identity);
+    }
+
+    public void GetInSocket(Transform parent)
+    {
+        rb.isKinematic = true;
+        rb.useGravity = false;
+        transform.parent = parent;
+        transform.localPosition = new Vector3(0.0f, 0.0f, 1.156f);
     }
 }

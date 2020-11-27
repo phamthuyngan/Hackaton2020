@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     private Robot robot;
     private LevelData lvlData;
     private Coroutine cor;
+    [SerializeField] private Text cyclesDisplay;
 
     [SerializeField] private GameObject timelinePanel;
     private List<Action>[] timelines;
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
 
     private int currentTurn;
     private int NbrOfTurns;
+    private int NbrOfCycles;
     private int NbrOfParts = 6;
     [SerializeField] private float secondsBetweenTurns = 1.0f;
     [SerializeField] private GameObject timelineElement;
@@ -86,18 +88,20 @@ public class UIManager : MonoBehaviour
             }
                 if (NbrOfTurns == 0)
                     return;
-
-            cor = StartCoroutine(PlayActions());// start the reading coroutine
+            NbrOfCycles = NbrOfTurns;
+        cor = StartCoroutine(PlayActions());// start the reading coroutine
         }
     }
     public void Win()
     {
         winScreen.SetActive(true);
         gameManager.Pause();
+        cyclesDisplay.text = "Number of cycles : " + NbrOfCycles;
     }
     public void SaveData(Text pseudo)
     {
         lvlData.pseudo = pseudo.text;
+        lvlData.cycles = NbrOfCycles;
         string data = JsonUtility.ToJson(lvlData);
         gameManager.ExportData(data);
         Communicator.SaveResult(lvlData.pseudo, lvlData.cycles);

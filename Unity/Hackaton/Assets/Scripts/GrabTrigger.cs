@@ -15,15 +15,9 @@ public class GrabTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.TryGetComponent<LanguagueBalls>(out grabbedObj))
-        {
+        if (arm.isGrabbing && other.TryGetComponent(out grabbedObj))
             grabbedObj.GetGrabbed(transform);
-           
-            //grabbedObj.GetComponent<LanguagueBalls>().GetGrabbed();
-        }
         else if (!arm.isGrabbing && grabbedObj != null)
-        {
             grabbedObj.GetReleased();
-        }
     }
 }
