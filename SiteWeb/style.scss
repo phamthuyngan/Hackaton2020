@@ -12,7 +12,8 @@ body {
   //   rgba(163, 81, 175, 1) 64%,
   //   rgba(252, 70, 219, 1) 100%
   // );
-  background-color: rgb(155, 56, 127);
+  // background-color: rgb(155, 56, 127);
+  background-color: rgb(123, 72, 137);
   background-image: url(./static/computer.png);
   background-blend-mode: multiply;
   color: white;
@@ -86,12 +87,11 @@ nav ul li a:hover {
   margin: 20px;
 }
 .explication {
-  width: 50%;
   text-align: left;
 }
 .photo {
-  width: 40%;
-  margin: 5%;
+  margin-left: 50px;
+  width: 100%;
 
   background-image: url(./static/robots.jpg);
   background-size: contain;
@@ -112,14 +112,15 @@ i {
 table,
 tr,
 td {
-  border: 1px solid gray;
+  border: 1px solid rgb(155, 56, 127);
 }
 table {
   margin: auto;
   margin-top: 50px;
   border-collapse: collapse;
 }
-td {
+td,
+th {
   width: 200px;
   height: 30px;
 }
@@ -137,7 +138,7 @@ tr:nth-child(even) {
 }
 .mySlides {
   display: none;
-  border: 1px solid gray;
+  // border: 1px solid gray;
   background-color: rgba(172, 170, 170, 0.3);
   width: 60%;
   text-align: left;
@@ -164,8 +165,9 @@ tr:nth-child(even) {
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
+  line-height: 40px;
   border-radius: 50%;
   padding-top: 10px;
   background-color: rgba(172, 170, 170, 0.3);

@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: -5199464817162328408}
   m_Layer: 0
   m_Name: Spherecss
-  m_TagString: Untagged
+  m_TagString: LanguageBalls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
