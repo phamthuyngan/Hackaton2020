@@ -5,8 +5,16 @@ public enum Axis { x, y, z };
 public class Robot : MonoBehaviour
 {
     [SerializeField] private GameObject[] parts; 
-    [Range(0.0f, 1.0f)][SerializeField] private float rotationSpeed;
+    [Range(0.0f, 5.0f)][SerializeField] private float rotationSpeed;
+    public bool isGrabbing { get; private set; }
 
+    private void Update()
+    {
+        if (parts[parts.Length - 1].transform.rotation.z <= 0.1f)
+            isGrabbing = true;
+        else
+            isGrabbing = false;
+    }
     public void ResetRotation()
     {
         for (int i = 0; i < parts.Length - 2; i++)
@@ -60,6 +68,7 @@ public class Robot : MonoBehaviour
             }
             yield return new WaitForEndOfFrame();
         }
+      
     }
 
 }

@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float secondsBetweenTurns = 1.0f;
     [SerializeField] private GameObject timelineElement;
     [SerializeField] private GameObject winScreen;
+    private LanguagueBalls[] ballsInScene;
     public bool isReading { get; private set; }
     public UIManager()
     {
@@ -32,6 +33,8 @@ public class UIManager : MonoBehaviour
         robot = FindObjectOfType<Robot>();
         lvlData = (LevelData)ScriptableObject.CreateInstance(typeof(LevelData));
         ArraysInit();
+        ballsInScene = FindObjectsOfType<LanguagueBalls>();
+
     }
     public void AddAction(int objIndex, Action action, Image image)
     {
@@ -66,6 +69,10 @@ public class UIManager : MonoBehaviour
 
         ArraysInit();
         robot.ResetRotation();
+        foreach (LanguagueBalls ball in ballsInScene)
+        {
+            ball.Reset();
+        }
     }
     public void ReadTimeline()
     {
@@ -123,6 +130,10 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(secondsBetweenTurns);
         }
         robot.ResetRotation();
+        foreach (LanguagueBalls ball in ballsInScene)
+        {
+            ball.Reset();
+        }
         isReading = false;
     }
 

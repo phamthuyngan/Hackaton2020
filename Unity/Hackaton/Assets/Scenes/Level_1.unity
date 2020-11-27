@@ -1388,6 +1388,10 @@ PrefabInstance:
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.9960785
       objectReference: {fileID: 0}
+    - target: {fileID: 2529660495329033379, guid: aad8aa6a71e5ec74aa6c1ed18d84cf8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2529660495343485197, guid: aad8aa6a71e5ec74aa6c1ed18d84cf8b, type: 3}
       propertyPath: m_Sprite
       value: 

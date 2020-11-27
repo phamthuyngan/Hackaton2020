@@ -5,10 +5,12 @@ using UnityEngine;
 public class ArmNode : MonoBehaviour
 {
     private Camera cam;
-    [SerializeField] private Transform target;
+    private Transform target;
+    [SerializeField] private string targetName;
     void Awake()
     {
         cam = FindObjectOfType<Camera>();
+        target = GameObject.Find(targetName).transform;
     }
 
     void Update()
