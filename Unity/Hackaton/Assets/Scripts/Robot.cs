@@ -7,6 +7,13 @@ public class Robot : MonoBehaviour
     [SerializeField] private GameObject[] parts; 
     [Range(0.0f, 1.0f)][SerializeField] private float rotationSpeed;
 
+    public void ResetRotation()
+    {
+        for (int i = 0; i < parts.Length - 2; i++)
+            parts[i].transform.localEulerAngles = new Vector3();
+        parts[parts.Length - 1].transform.localEulerAngles = new Vector3(0.0f,0.0f,-12.5f);
+    }
+
     public void MovePart(int objIndex, Action action)
     {
         StartCoroutine(RotateTo(parts[objIndex], action.axis, action.angle));
@@ -46,12 +53,11 @@ public class Robot : MonoBehaviour
                     part.transform.localEulerAngles = new Vector3(part.transform.localEulerAngles.x, Mathf.LerpAngle(currentRotation, endRotation, lerpPos), part.transform.localEulerAngles.z);
                     break;
                 case Axis.z:
-                    break;
                     part.transform.localEulerAngles = new Vector3(part.transform.localEulerAngles.x, part.transform.localEulerAngles.y, Mathf.LerpAngle(currentRotation, endRotation, lerpPos));
+                    break;
                 default:
                     break;
             }
-            Debug.Log(part.transform.localEulerAngles);
             yield return new WaitForEndOfFrame();
         }
     }
